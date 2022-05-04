@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        div.out{
+            height: 250px;
+            width: 40%;
+            /* 上下 左右 */
+            margin: 0 15px;
+            background-color: aliceblue;
+            /* 元素靠左 */
+            float: left;
+        }
+        div.in{
+            width: 60%;
+            height: 60%;
+            background-color: lightgreen;
+            margin: 10px auto;
+            /* border: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>mouse event</h1>
+    </header>
+    <div class="container">
+        <button id="btn">Button</button>
+        <hr>
+        <div class="out overout">
+            <span>move your mouse</span>
+            <div class="in over"></div>
+        </div>
+        <div class="out enterleave">
+            <span>move your mouse</span>
+            <div class="in enter"></div>
+        </div>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 比較少用 手機板
+            $('#btn').dblclick(function(){
+                console.log('double click')
+            })
+            // 比較少用
+            $('#btn').contextmenu(function(){
+                console.log('right click')
+            })
+
+            $('#btn').mousedown(function(){
+                console.log('mousedown')
+            })
+            $('#btn').mouseup(function(){
+                console.log('mouseup')
+            })
+            let count_overout=0
+            $('div.overout').mouseover(function(){
+                count_overout+=1
+                $(this).find('span').text('mouse over'+count_overout)
+            })
+            // .mouseout(function(){
+            //     // count_overout+=1
+            //     $(this).find('span').text('mouse out'+count_overout)
+         
+            // })
+            // $('div.over').mouseover(function(){
+            //     count_overout+=1
+            //     $(this).find('span').text('move your mouse'+count_overout)
+                    
+            // })
+
+            let count_enterleave=0
+            $('div.enterleave').mouseenter(function(){
+                count_enterleave+=1
+                $(this).find('span').text('move enter '+count_enterleave)
+            })
+            // .mouseleave(function(){
+            //     // count_enterleave+=1
+            //     $(this).find('span').text('move leave '+count_enterleave)
+                
+            // })
+            // $('div.enter').mouseenter(function(){
+            //     console.log('123')
+            //     count_enterleave+=1
+            //     $(this).find('span').text('move your mouse'+count_enterleave)
+                    
+            // })
+        })
+    </script>
+</body>
+</html>

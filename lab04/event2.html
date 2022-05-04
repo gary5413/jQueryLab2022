@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        #div1{
+            height: 100px;
+            width: 500px;
+            padding: 10;
+            border: 1px solid black;
+            background-color: lightblue;
+            
+        }
+        p{
+             background-color: lightcoral;   
+            }
+        span{
+            background-color: lightgreen;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Event2</h1>
+    </header>
+    <div class="container">
+        <h3>1.preventDefault()</h3>
+        <a href="https://jquery.com/">jQuery.com</a>
+        <div id="target"></div>
+        <hr>
+        <h3>2.stopPropagation()</h3>
+        <div id="div1">
+            div element
+            <p>
+                p element
+                <span>span element</span>
+            </p>
+        </div>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('a').on('click',function(){
+                event.preventDefault();
+                $('#target').text(`default ${event.type} prevented`)
+            })
+            $('#div1').on('click',function(){
+                event.stopPropagation();
+                console.log('this is div element was click')
+            })
+            $('p').on('click',function(){
+                // event.stopPropagation();
+                console.log('this is p element was click')
+            })
+            $('span').on('click',function(){
+                // event.stopPropagation();
+                console.log('this is span element was clikc')
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab03</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        #table1{
+            border:2px solid black;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            text-align: center;
+
+        }
+        #table1 tr td{
+            border: 1px solid black;
+        }
+        #table1 td{
+            width: 90px;
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: pink;
+            /* display: inline-block; */
+            /* 外距 */
+            margin: auto;
+            /* //主軸對其方式 居中 */
+            justify-content: center;
+            /* //次軸對其方式 居中 */
+            align-items: center;
+            display: flex;
+            
+        }
+        .box2{
+            width: 20px;
+            height: 20px;
+            border-radius:50%;
+            background-color: blueviolet;
+            /* display: inline-block; */
+           
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tree Travelsal</h1>
+    </header>
+    <div class="container">
+        <table id="table1">
+            <tr>
+                <td>
+                    <div class="box">
+                        <div class="box2"></div>
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td></td>
+                <td class="stop"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td  class="stop"></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td  class="stop"></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td>
+                   
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('td').on('click',function(){
+                //children()
+                // console.log('123')
+                // $(this).children('.box').css('background','lightblue')
+                // $(this).children().children('.box2').css('background','lightblue')
+                $(this).find('.box2').css('background','lightblue')
+
+                //next()
+                // $(this).nextAll().css('background','lightblue')
+                // $(this).nextUntil('.stop').css('background','lightblue')
+                
+                //prev()
+                // $(this).prevAll().css('background','lightgreen')
+                // $(this).prevUntil('.stop').css('background','lightgreen')
+                
+                
+                // $(this).next().css('background','lightblue')
+                // $(this).prev().css('background','lightgreen')
+
+                // $(this).next().css('background','lightblue')
+                // .prev().css('background','lightgreen')
+                // $(this).next().css('background','lightblue')
+                // .prev().prev().css('background','lightgreen')
+                // $(this).css('background','none')
+                // .next().css('background','lightblue')
+                // .prev().prev().css('background','lightgreen')
+                
+                // end()
+                $(this).css('background','none')
+                .next().css('background','lightblue')
+                .end().prev().css('background','lightgreen')
+                
+
+            })
+            $('.box').on('click',function(){
+                //parent()
+            //    $(this).parent().css('background','lightgreen')
+            //    $(this).parent().parent().css('background','lightgreen')
+                console.log($(this).parents())
+                // $(this).parentsUntil('table').css('background','yellow')
+                // $(this).closest('tr').css('background','red')
+            })
+            
+
+            
+        })
+    </script>
+</body>
+</html>
