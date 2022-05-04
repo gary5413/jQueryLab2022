@@ -28,14 +28,14 @@
     <div class="container">
         <table>
             <tr>
-                <td>1</td>
+                <td class="not">1</td>
                 <td>2</td>
                 <td class="not">3</td>
             </tr>
             <tr>
                 <td class="not">1</td>
                 <td>2</td>
-                <td>3</td>
+                <td class="not">3</td>
             </tr>
             <tr>
                 <td>1</td>
@@ -48,10 +48,10 @@
             <hr>
             <ul class="list">
                 <li>List item</li>
+                <li class="not">List item</li>
                 <li>List item</li>
                 <li>List item</li>
-                <li>List item</li>
-                <li>List item</li>
+                <li class="not">List item</li>
             </ul>
         </table>
         <hr>
@@ -72,7 +72,10 @@
         </p>
         <p id="para4"></p>
     </div>
-    <script src="/jquery-3.6.0.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
     <script>
         //content filter
         $('p:contains("Hello")').css('background','yellow')
@@ -102,6 +105,7 @@
         // console.log($('div,p'))
         //basic filter
         //eq(n) 從0開始
+<<<<<<< HEAD
         // $('td:eq(1)').css('background', 'pink')
         // $('li:eq(0)').css('background', 'pink')
         // $('td:even,li:even').css('background', 'lightgreen')
@@ -118,6 +122,22 @@
       
 
     </script>
+=======
+        $('td:eq(1)').css('background','pink')
+        $('li:eq(0)').css('background','pink')
+        $('td:even,li:even').css('background','lightgreen')
+        $('td:odd,li:odd').css('background','lightblue')
+        // lt<3
+        $('td:lt(3)').css('background','yellow')
+        // gt >4
+        $('td:gt(4)').css('background','black')
+        $('td:first').css('background','red')
+        $('td:last').css('background','blue')
+        // element:not(selctor)
+        $('td:not(.not)').css('background','white')
+        
+ </script>
+>>>>>>> f830f2106563e787396af86c0d19d5735b8c14d9
 </body>
 
 </html>
