@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lab07</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <style>
+        .div-card{
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,17 +18,70 @@
     </header>
     <div class="container">
         <form action="">
-
-
+            <input type="text" class="text1">
+            <div>            
+                <input type="text" class="card-input" maxlength="4">
+                <input type="text" class="card-input" maxlength="4">
+                <input type="text" class="card-input" maxlength="4">
+                <input type="text" class="card-input" maxlength="4">
+          </div>
+          <hr>
+              <div class="div-card">
+                  <input type="text" class="card-input1" maxlength="4">
+              </div>                                                   
+              <div class="div-card">
+                  <input type="text" class="card-input1" maxlength="4">
+              </div>                  
+              <div class="div-card">
+                  <input type="text" class="card-input1" maxlength="4">
+              </div>                    
+              <div class="div-card">
+                  <input type="text" class="card-input1" maxlength="4">
+              </div>      
+              <hr>
+              <div>
+                  <select name="" id="select">
+                      <option value="TPE">台北市</option>
+                      <option value="NTPC">新北市</option>
+                      <option value="TYN">桃園市</option>
+                  </select>
+                  <div class="target"></div>
+              </div>
             
         </form>
     </div>
-    <script src="/jquery-3.6.0.js"></script>
+    <script src="/jQueryLab2022/jquery-3.6.0.js"></script>
     <script>
         $(function(){
+            $('.text1').focus(function(){
+                console.log('123')
+            })
+            $('.text1').blur(function(){
+                console.log('456')
+            })
+            let maxLength=4;
+            $('.card-input').keyup(function(){
+                console.log($(this).val().length)
+                let contentLength=$(this).val().length;
+                // == 不用轉型 ===要轉型
+                if(maxLength==contentLength){
+                    $(this).next().focus()
 
-
-            
+                }
+            })
+            $('.card-input1').keyup(function(){
+                let contentLength=$(this).val().length;
+                if(maxLength==contentLength){
+                    $(this).parent().next().find(':input').focus()
+                }
+            })
+            $('#select').change(function(){
+                console.log($(this).val())
+                let content=$(this).val()
+                $('.target').text(content)
+            })
+        
+        
         })
     </script>
 </body>
