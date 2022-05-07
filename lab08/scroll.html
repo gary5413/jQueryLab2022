@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab08</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <style>
+        .con {
+            width: 100px;
+            height: 100px;
+            /* 溢出內容 預設會自動使用捲軸
+            overflow: auto;　//預設會自動使用捲軸
+            overflow:visible;　 //顯示的文字或圖片會直接超出範圍，不使用捲軸。
+            overflow:hidden;　//自動隱藏超出的文字或圖片。
+            overflow:scroll;　//自動產生捲軸。
+            overflow:inherit;　//繼承自父元素的可見性
+            */
+            overflow: auto;
+            background-color: black;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+        }
+
+        body {
+            /* view hight 螢幕可是範圍高度百分比 */
+            height: 300vh;
+        }
+
+        .progress {
+            background-color: lightgray;
+            position: fixed;
+            width: 100%;
+            height: 30px;
+            top: 0;
+            left: 0;
+        }
+        .progress-percent{
+            background-color: lightgreen;
+            height: 30px;
+            width: 0%;
+        }
+        #btn{
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>scroll</h1>
+    </header>
+    <div class="container">
+        <div class="progress">
+            <div class="progress-percent"></div>
+        </div>
+        <div class="con">
+            <div class="box"></div>
+        </div>
+        <button id="btn">btn</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            // 
+            $('.con').scroll(function () {
+                console.log(`scrollTop:${$(this).scrollTop()},scrollLeft:${$(this).scrollLeft()}`)
+            })
+
+            // 
+            /*
+            now top/body-window
+            */
+           let bodyH=$('body').height()
+           let windowH=$(window).height()
+            $(window).scroll(function(){
+                let windowTop=$(this).scrollTop();
+                // console.log(windowTop)
+                let scrollPercent=Math.round((windowTop/(bodyH-windowH))*100)+'%'
+                $('.progress-percent').css('width',scrollPercent)
+            })
+
+            $('#btn').click(function(){
+                // $(window).scrollTop(0)
+                $('html,body').animate({
+                    scrollTop:0
+                },900)
+
+
+            })
+            
+        })
+    </script>
+</body>
+
+</html>

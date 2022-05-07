@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab08</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <style>
+        .resize{
+            width: 400px;
+            height: 300px;
+            position: absolute;
+        }
+        img{
+            width: 400px;
+            height: 300px;
+            position: absolute;
+            float:left;
+        }
+        p{
+            border: 2px solid black;
+            background-color: lightgreen;
+            width: 500px;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>reasize</h1>
+    </header>
+    <div class="container">
+        <p id="p1"></p>
+        
+        <div class="resize">
+            <img src="/jQueryLab2022/lab08/car.avif" alt="">
+        </div>
+    </div>
+</body>
+<script src="/jQueryLab2022/jquery-3.6.0.js"></script>
+<script>
+    $(function(){
+        let p=$('#p1')
+        $('#p1').text(`innerWidth:${p.innerWidth()},outterWith:${p.outerWidth()},outterWith(true):${p.outerWidth(true)}`)
+
+        resize_img();
+        $(window).resize(resize_img)
+        function resize_img(){
+            let winW=$(window).width()
+            let winH=$(window).height()
+            let divW=$('.resize').width()
+            let divH=$('.resize').height()
+            
+            let left =(winW-divW)/2
+            let top =(winH-divH)/2
+            $('.resize').css({
+                'left':left,
+                'top':top       
+            })
+        }
+            
+
+
+
+    })
+</script>
+</html>
