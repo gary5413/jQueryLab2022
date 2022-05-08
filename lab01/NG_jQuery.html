@@ -5,15 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lab01</title>
-    <link rel="stylesheet" href="/style.css">
-    <script src="/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <!-- <script src="/jQueryLab2022/jquery-3.6.0.js"></script> -->
     <!-- 
-        1.jquery.js
-        2.dom 生成
+        1.$ is not defined
+        2.
      -->
+    <script src="/jQueryLab2022/jquery-3.6.0.js"></script>
     <script>
         console.log($('h1'))
-        jQuery(document).ready(function(){
+        // jQuery(document).ready(function(){
+        //     console.log($('h1'))
+        // })
+        $(function(){
             console.log($('h1'))
         })
     </script>
@@ -23,6 +27,5 @@
         <h1>NG jQuery</h1>
     </header>
 
-    <!-- <script src="/jquery-3.6.0.js"></script> -->
 </body>
 </html>

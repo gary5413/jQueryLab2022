@@ -14,9 +14,9 @@
     <div class="container">
         <h1 id="target">jQuery</h1>
         <hr>
-        <h1 id="targetAll">jQuery</h1>
-        <h1 id="targetAll">jQuery</h1>
-        <h1 id="targetAll">jQuery</h1>
+        <h1 class="targetAll">jQuery</h1>
+        <h1 class="targetAll">jQuery</h1>
+        <h1 class="targetAll">jQuery</h1>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -26,7 +26,7 @@
             $('#target').css('color','black')
         })
        
-        $('h1#targetAll').on('mouseenter',function(){
+        $('.targetAll').on('mouseenter',function(){
             $(this).css('color','lightgreen')
         }).on('mouseleave',function(){
             $(this).css('color','black')
