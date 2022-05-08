@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab10</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <link rel="stylesheet" href="/fontawesome-free-6.1.1-web/css/all.css">
+    <style>
+        .input{
+            display: inline-block;
+        }
+        table{
+            width: 500px;
+            border: 2px solid black;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>address book</h1>
+    </header>
+    <div class="container">
+        <div class="input">
+            <input type="text" id="name" placeholder="請輸入姓名">
+        </div>
+        <div class="input">
+            <input type="text" id="phone" placeholder="請輸入電話">
+        </div>
+        <div class="input">
+            <input type="text" id="email" placeholder="請輸入Email">
+        </div>
+        <div class="input">
+            <button id="add"><i class="fa-solid fa-address-book"></i></button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>phone</th>
+                    <th>email</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <button class="del"></button> -->
+            </tbody>
+        </table>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('#add').on('click',function(){
+                let name =$('#name').val(),phone=$('#phone').val(),email=$('#email').val()
+                let content=`
+                <tr>
+                    <td>${name}</td>
+                    <td>${phone}</td>
+                    <td>${email}</td>                  
+                    <td><button class="del"><i class="fa-solid fa-person-circle-minus"></i></button></td>                
+                </tr>
+                `
+                $('tbody').append(content)
+                $('#name').val("")
+                $('#phone').val("")
+                $('#email').val("")
+            })
+
+            $('tbody').on('click','.del',function(){
+                $(this).closest('tr').remove()
+            })
+            // font awesome
+            
+        })
+    </script>
+</body>
+</html>

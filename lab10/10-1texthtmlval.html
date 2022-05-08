@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab10</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>text() html() val()</h1>
+    </header>
+    <div class="container">
+        <h3 id="source">Hello jQuery</h3>
+        <h3 id="target"></h3>
+        <button id="getText">get text</button>
+        <button id="setText">set text</button>
+        <br>
+        <p>
+            <b>Click</b> to change the <span id="tag">html</span>
+        </p>
+        <button id="setHtml">set Html</button>
+        <hr>
+        <input type="nuber" id="num1">
+        <select name="" id="calculate">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="num2">
+        <button id="result">=</button>
+        <input type="text" value="0" id="show" readonly>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            // text()
+            $('#getText').on('click', function () {
+                let gettext = $('#source').text()
+                $('#target').text(gettext)
+            })
+            $('#setText').on('click', function () {
+                $('#source').text('set Text jQuery')
+            })
+            // html()
+            $('p').one('click', function () {
+                let htmlString = $('p').html();
+                $(this).text(htmlString)
+            })
+            $('#setHtml').on('click', function () {
+                $('p').html('<h1>set Html</h1>')
+            })
+            // val()
+            $('#result').on('click', function () {
+                let num1 = Number($('#num1').val())
+                let num2 = Number($('#num2').val())
+                let calculate = $('#calculate').val()
+                let result = 0
+                switch (calculate) {
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                    case "*":
+                        result = num1 * num2;
+                        break;
+                    case "/":
+                        result = num1 / num2;
+                        break;
+
+                }
+                // if(result===window.Infinity){
+                //     result='infinity'
+                // }
+                console.log(result)
+                $('#show').val(result)
+            })
+
+        })
+    </script>
+</body>
+
+</html>
