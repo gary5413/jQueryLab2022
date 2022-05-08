@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+
+        }
+
+        .box:hover {
+            width: 300px;
+            transition: 2s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 1s;
+            border-radius: 50%;
+
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            animation-duration: 4s;
+            animation-name: example;
+        }
+
+        @keyframes example {
+            from {background-color: red;}
+            to {background-color: yellow;}
+        }
+       
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1></h1>
+    </header>
+    <div class="container">
+        <div class="box"></div>
+        <br>
+        <div class="box1"></div>
+        <br>
+        <div class="box2" style="width: 100px;height: 100px;background-color: pink;"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            let box2=document.querySelector('.box2')
+            box2.addEventListener('click',function(){
+                // console.log('123')
+                let t=window.setInterval(show,1000)
+                function show(){
+                    let w=parseInt(box2.style.width)+5
+                    console.log(w)
+                    if(w>=200){
+                        window.clearInterval(t)
+                    }
+                    box2.style.width=w+'px'
+                }
+            })
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background-color: lightblue;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>animate</h1>
+    </header>
+    <div class="container">
+        <button id="moveRight">move right</button>
+        <button id="moveLeft">move left</button>
+        <button id="moveAround">move around</button>
+        <button id="swing">swing</button>
+        <hr>
+        <div class="box"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('#moveRight').click(function(){
+                $('.box').animate({
+                    left:500,
+                    height:300,
+                    width:300,             
+                },1000)
+            })
+            $('#moveLeft').click(function(){
+                $('.box').animate({
+                    left:0,
+                    height:100,
+                    width:100
+                },500)
+            })
+            $('#moveAround').click(function(){
+                let box=$('.box')
+                box.animate({
+                    left:300,
+                }).animate({
+                    top:300
+                }).animate({
+                    left:0,
+                    top:300
+                }).animate({
+                    left:0,
+                    top:0
+                })
+            })
+            $('#swing').click(function(){
+                $('.box').animate({
+                    left:500,
+                    top:500
+                },{
+                    duration:1000,
+                    specialEasing:{
+                        top:'linear',
+                        left:'swing'
+                    }
+                }).animate({
+                    left:0,
+                    top:0
+                },{
+                    duration:500,
+                    specialEasing:{
+                        top:'linear',
+                        left:'swing'
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
