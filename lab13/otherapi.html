@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>each inArray grep map data</h1>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+        </table>
+        <button class="btn" data-age="34" data-team="warriors" data-name="stephen curry">stephen curry</button>
+        <button class="btn" data-age="27" data-team="angels" data-name="shohei ohtani">shohei ohtani</button>
+        <h3 class="target"></h3>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            // each()
+            let arr=['Gary','ispan','EEIT45']
+            $.each(arr,function(index,ele){
+                console.log(ele)
+            })
+            let sum=0
+            $('td').each(function(){
+                // console.log($(this).text())
+                sum+=Number($(this).text())
+            })
+            console.log(sum)
+            // inArray() 搜尋你所放的索引值
+            let arr1=['9','5','4',1,2,3]
+            console.log($.inArray('5',arr1))
+            console.log($.inArray(1,arr1))
+            // grep()
+            arr2=$.grep(arr1,function(item,index){
+                return (item %2==0)
+            })
+            console.log(arr2)
+            // map()
+            arr3=$.map(arr1,function(item,index){
+                return item*index
+            })
+            console.log(arr3)
+            // data()
+            $('.btn').click(function(){
+                let age=$(this).data('age'),team=$(this).data('team'),name=$(this).data('name')
+                $('.target').text(`${name} age is ${age} and team is ${team}`)
+            })
+        })
+    </script>
+</body>
+
+</html>
