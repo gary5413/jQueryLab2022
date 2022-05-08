@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <style>
+        table {
+            border: 2px solid black;
+            width: 500px;
+            margin: 10px;
+        }
+
+        tr {
+            text-align: center;
+        }
+
+        tr.active {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>checkAll</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkall"></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="content">
+                    <td><input type="checkbox" class="checkbox1"></td>
+                    <td>Gary</td>
+                    <td>garylee@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+                <tr class="content">
+                    <td><input type="checkbox" class="checkbox1"></td>
+                    <td>Gary</td>
+                    <td>garylee@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+                <tr class="content">
+                    <td><input type="checkbox" class="checkbox1"></td>
+                    <td>Gary</td>
+                    <td>garylee@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            let content = $('.content').length
+            // console.log(content)
+            $('.checkbox1').on('click', function () {
+                // console.log('123')
+                let checked = $(this).prop('checked')
+                if (checked) {
+                    $(this).closest('tr').addClass('active')
+                } else {
+                    $(this).closest('tr').removeClass('active')
+                }
+                let checkedContent = $('tr.active').length
+                // console.log(checkedContent)
+                if(content==checkedContent){
+                    $('#checkall').prop('checked',true)
+                }else{
+                    $('#checkall').prop('checked',false)
+                }
+            })
+            $('#checkall').on('click',function(){
+                if($(this).prop('checked')){
+                    $('.content :checkbox').prop('checked',true)
+                    .closest('tr').addClass('active')
+                }else{
+                    $('.content :checkbox').prop('checked',false)
+                    .closest('tr').removeClass('active')
+                
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

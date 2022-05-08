@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            transition: .5s;
+        }
+        .box.active{
+            background-color: pink;
+            border-radius:50% ;
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>attr prop addclass</h1>
+    </header>
+    <div class="container">
+        <img id="sourceImg" src="/jQueryLab2022/lab08/car.avif" alt="car" title="快車">
+        <br>
+        <button id="getAttr">get attr</button>
+        <button id="setAttr">set attr</button>
+        <hr>
+        <button id="getProp">get prop</button>
+        <button id="setProp">set prop</button>
+        <br>
+        <input type="checkbox" id="checkbox">同意條款
+        <button id="confirm" disabled>confirm</button>
+        <hr>
+        <div class="box"></div>
+        <br>
+        <button id="addclass">add class</button>
+        <button id="removeclass">remove class</button>
+        <button id="toggleclass">toggle class</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            // attr()
+            $('#getAttr').click(function(){
+
+                let img_alt=$('#sourceImg').attr('alt')
+                let img_title=$('#sourceImg').attr('title')
+                console.log(`alt:${img_alt},title:${img_title}`)
+            })
+        })
+        $('#setAttr').click(function(){
+            $('#sourceImg').attr({
+                src:'',
+                title:'null'
+            })
+            $('#sourceImg').removeAttr('alt')
+        })
+        // https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/271391/
+        // prop()
+        $('#getProp').on('click',function(){
+            console.log($('#checkbox').prop('checked'))
+            // console.log($('#checkbox').attr('checked'))
+            /*
+            像checkbox，radio和select這樣的元素，
+            選中屬性對應“checked”和“selected”，這些也屬於固有屬性，
+            因此需要使用prop方法去操作才能獲得正確的結果。
+            */
+
+
+        })
+        $('#checkbox').on('click',function(){
+            let checked=$(this).prop('checked')
+            // console.log(checked)
+            // if(checked){
+            //     $('#confirm').prop('disabled',false)
+            // }else{
+            //     $('#confirm').prop('disabled',true)
+            // }
+            $('#confirm').prop('disabled',!$(this).prop('checked'))
+
+        })
+        // addclass
+        $('#addclass').on('click',function(){
+            $('.box').addClass('active')
+        })
+        $('#removeclass').click(function(){
+            $('.box').removeClass('active')
+        })
+        $('#toggleclass').click(function(){
+            $('.box').toggleClass('active')
+        })
+
+    </script>
+</body>
+</html>
