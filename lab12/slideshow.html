@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab12</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <link rel="stylesheet" href="/fontawesome-free-6.1.1-web/css/all.css">
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            background-color: black;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-img {
+            position: absolute;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 4000px;
+            /* 彈性 並排 */
+            display: flex;
+            /* left: -800px; */
+        }
+
+        .slide-img li {
+            width: 800px;
+            height: 400px;
+        }
+
+        .slide-img li img {
+            width: 100%;
+            height: 100%;
+            /* 控制元素內容填入大小 調整照片比例 */
+            object-fit: cover;
+        }
+
+        .pages {
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            bottom: 10px;
+            width: 100%;
+            /* 主軸 置中對其 */
+            justify-content: center;
+
+        }
+
+        .pages li {
+            border: 1px solid #fff;
+            width: 30px;
+            height: 10px;
+            margin: 0 5px;
+        }
+        .slide-arrow{
+            position: absolute;
+            /* background-color: red; */
+            width: 40px;
+            height: 100%;
+            font-size: 36px;
+            z-index: 1;
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            color: white;
+            opacity: .6;
+            cursor: pointer;
+        }
+        .right{
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>slideshow</h1>
+    </header>
+    <div class="container">
+        <div class="wrap"> 
+            <a  class="slide-arrow" id="slidePrev"><i class="fa-solid fa-arrow-left"></i></a>
+            <a  class="slide-arrow right" id="slideNext"><i class="fa-solid fa-arrow-right"></i></a>
+            <ul class="slide-img" id="slideImg">
+                <li><img src="/jQueryLab2022/lab12/imgs/slide1.jpg" alt=""></li>
+                <li><img src="/jQueryLab2022/lab12/imgs/slide2.jpg" alt=""></li>
+                <li><img src="/jQueryLab2022/lab12/imgs/slide3.jpg" alt=""></li>
+                <li><img src="/jQueryLab2022/lab12/imgs/slide4.jpg" alt=""></li>
+                <li><img src="/jQueryLab2022/lab12/imgs/slide5.jpg" alt=""></li>
+            </ul>
+            <ul class="pages" id="pages">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            /*
+            1.第一章圖移動
+                $('#slideImg').css('left','-800px')
+            2. N張圖移動  index()
+                let index=$(this).index()
+                let slideMove=0-index*800
+                $('#slideImg').css('left', slideMove)
+            3.換頁變色
+                $(this).css('background','white')
+                    .siblings().css('background','transparent')
+                */
+            // 4.
+            let index=0
+            let slideMove=0
+            $('.pages li').eq(0).css('background','white')
+            $('.pages li').on('mouseenter', function () {
+                // console.log('123')
+                // $('#slideImg').css('left', '-800px')
+                index=$(this).index()
+                // console.log(index)
+                // slideMove=0-index*800
+                // $('#slideImg').css('left', slideMove)
+                // $(this).css('background','white')
+                //     .siblings().css('background','transparent')
+                moveImg()
+            })
+            /*
+            4.左右換頁 
+            $('#slideNext').click(function(){
+                console.log('123')
+                index++;
+                slideMove=0-index*800
+                $('#slideImg').css('left', slideMove)
+                // 下面換頁直接貼過來會報錯 $(this)
+                $('.pages li').eq(index).css('background','white')
+                    .siblings().css('background','transparent')
+            })
+            4-1
+            一開始換頁
+            $('.pages li').eq(0).css('background','white')
+            */
+            let slideli=$('.pages li').length
+            $('#slideNext').click(function(){
+                // console.log('123')
+                index++;
+                if(index>=slideli){
+                    index=0
+                }
+                // slideMove=0-index*800
+                // $('#slideImg').css('left', slideMove)
+                // // 下面換頁直接貼過來會報錯 $(this)
+                // $('.pages li').eq(index).css('background','white')
+                //     .siblings().css('background','transparent')
+                moveImg()
+            })
+            /*
+            5.
+            */
+           $('#slidePrev').click(function(){
+                index--;
+                if(index<0){
+                    index=slideli-1
+                }
+                moveImg()
+           })
+           function moveImg(){
+                slideMove=0-index*800
+                $('#slideImg').css('left', slideMove)        
+                $('.pages li').eq(index).css('background','white')
+                    .siblings().css('background','transparent')
+           }
+           setInterval(autoImg,2000)
+           function autoImg(){
+               index++;
+               if(index>=slideli){
+                   index=0;
+               }
+               moveImg()
+           }
+
+        })
+    </script>
+</body>
+
+</html>
