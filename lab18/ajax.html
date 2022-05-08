@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Ajax</h1>
+    </header>
+    <div class="container">
+        <button id="btn">AJAX</button>
+        <ul id="data">
+            <li></li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            /*
+            $.ajax({
+                url:'', url位址
+                type:'get', post/get
+                data:{},輸入資料
+                error:function(){}錯誤
+                success:function(){}成功
+            })
+            */
+            $('#btn').on('click', function () {
+                $.ajax({
+                    url: 'https://ptx.transportdata.tw/MOTC/v2/Bus/Stop/City/Tainan?$format=JSON',
+                    success: function (respones) {
+                        $('#data').html('抓到資料囉')
+                        $.each(respones, function (index, ele) {
+                            $('#data').append(
+                                `
+                               <li>${ele.StopName.Zh_tw}</li>
+                               <li>${ele.StopAddress}</li>
+                               `
+                            )
+                        })
+                    }
+                })
+            })
+
+        })
+    </script>
+</body>
+
+</html>

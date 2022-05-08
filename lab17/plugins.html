@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/jQueryLab2022/style.css">
+    <link rel="stylesheet" href="/jQueryLab2022/lab17/js/lightbox2-dev/dist/css/lightbox.css">
+    <link rel="stylesheet" href="/jQueryLab2022/lab17/js/vegas/vegas.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <style>
+        img {
+            width: 200px;
+            height: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>plugins</h1>
+    </header>
+    <div class="container">
+        <div>
+            <a href="/jQueryLab2022/lab12/imgs/slide1.jpg" data-lightbox="roadtrip"><img
+                    src="/jQueryLab2022/lab12/imgs/slide1.jpg" alt=""></a>
+            <a href="/jQueryLab2022/lab12/imgs/slide2.jpg" data-lightbox="roadtrip"><img
+                    src="/jQueryLab2022/lab12/imgs/slide2.jpg" alt=""></a>
+            <a href="/jQueryLab2022/lab12/imgs/slide3.jpg" data-lightbox="roadtrip"><img
+                    src="/jQueryLab2022/lab12/imgs/slide3.jpg" alt=""></a>
+        </div>
+        <br>
+        <button id="btn">alert</button>
+        <br>
+        <table id="myTable" class="display">
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Gary Row 2 Data 2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/jQueryLab2022/lab17/js/lightbox2-dev/dist/js/lightbox.js"></script>
+    <script src="/jQueryLab2022/lab17/js/vegas/vegas.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function () {
+            $("#example, body").vegas({
+                slides: [
+                    { src: "/jQueryLab2022/lab12/imgs/slide1.jpg" },
+                    { src: "/jQueryLab2022/lab12/imgs/slide2.jpg" },
+                    { src: "/jQueryLab2022/lab12/imgs/slide3.jpg" },
+                    { src: "/jQueryLab2022/lab12/imgs/slide4.jpg" }
+                ],
+                transition: ['fade', 'zoomOut', 'swirlLeft']
+            });
+            $('#btn').click(function () {
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
+            })
+            $('#myTable').DataTable();
+
+        })
+    </script>
+</body>
+
+</html>
