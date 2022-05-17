@@ -73,8 +73,12 @@
                 37 39
                 */
             })
+            $('.target').css({
+                top:20,
+                background:'red'
+            })
             // document.onkeyup
-            document.onkeyup = function move() {
+            document.onkeydown = function move() {
                 switch (event.keyCode) {
 
 
@@ -87,7 +91,7 @@
                         if (parseInt($('.target').css('top')) < 300) {
 
                             $('.target').css({
-                                top: '+=' + 20,
+                                top: '+=' + 35,
                                 background: 'lightblue'
                             })
                         } else {
@@ -111,7 +115,7 @@
 
                             $('.target').css({
                                 
-                                top: '-=' + 20,
+                                top: '-=' + 35,
                                 background: 'pink'
                             })
                         }else{

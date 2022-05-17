@@ -15,8 +15,9 @@
         header{
             background-color: black;
             color: lightgreen;
-            padding: 20px;
             /* 內距 */
+            padding: 20px;
+            /* 水平對齊 */
             text-align: center;
             margin-bottom: 10px;
         }
@@ -34,9 +35,9 @@
     <div class="container">
         <h3 id="target">JavaScript</h3>
         <hr>
-        <h3 id="targetAll">JavaScript</h3>
-        <h3 id="targetAll">JavaScript</h3>
-        <h3 id="targetAll">JavaScript</h3>
+        <h3 id="targetAll" class="targetAll">JavaScript</h3>
+        <h3 id="targetAll" class="targetAll">JavaScript</h3>
+        <h3 id="targetAll" class="targetAll">JavaScript</h3>
     </div>
     <script>
         let h3=document.querySelector('#target')
@@ -48,14 +49,15 @@
             h3.style.color='black'
         })
         let h3All=document.querySelectorAll('#targetAll')
-        console.log(h3All)
-
-        for(let i=0;i<h3All.length;i++){
-            h3All[i].addEventListener('mouseenter',function(){
-                h3All[i].style.color='red';
+        let h3All1=document.querySelectorAll('.targetAll')
+        // console.log(h3All)
+        console.log(h3All1)
+        for(let i=0;i<h3All1.length;i++){
+            h3All1[i].addEventListener('mouseenter',function(){
+                h3All1[i].style.color='red';
             })
-            h3All[i].addEventListener('mouseleave',function(){
-                h3All[i].style.color='black'
+            h3All1[i].addEventListener('mouseleave',function(){
+                h3All1[i].style.color='black'
             })
         }
     </script>
