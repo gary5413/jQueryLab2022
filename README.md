@@ -1,6 +1,6 @@
 # jQueryLab2022
 jQueryLab2022
 
-### Lab01
- - jQuery介紹
+### 2022 jQuery教學
+EEIT45
  
